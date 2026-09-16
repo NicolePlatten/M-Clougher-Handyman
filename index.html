@@ -107,7 +107,7 @@ nav a:hover::after{width:100%}
 .eyebrow{color:var(--gold2);text-transform:uppercase;font-size:.68rem;font-weight:800;letter-spacing:.16em;margin-bottom:12px}
 .hero-title-row{
   display:grid;
-  grid-template-columns:minmax(0,1fr) 168px;
+  grid-template-columns:minmax(0,1fr) 205px;
   gap:26px;
   align-items:center;
 }
@@ -124,7 +124,7 @@ nav a:hover::after{width:100%}
 .tagline{font-size:clamp(1rem,1.45vw,1.28rem);margin:14px 0 9px;font-weight:600;color:#f0eee6}
 .hero-sub{font-size:.98rem;line-height:1.66;color:var(--muted);max-width:560px}
 .hero-logo-badge{
-  width:168px;
+  width:205px;
   justify-self:end;
   padding:9px;
   border-radius:18px;
@@ -202,12 +202,91 @@ section{padding:100px clamp(20px,5.3vw,82px)}
 .feature strong{display:block;margin-bottom:4px}
 .feature span{color:var(--muted);font-size:.88rem}
 
-.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.review{padding:26px;border-radius:17px;border:1px solid var(--line2);background:linear-gradient(145deg,#121212,#0b0b0b)}
+.marquee-shell{
+  position:relative;
+  overflow:hidden;
+  width:100%;
+  mask-image:linear-gradient(90deg,transparent 0,black 5%,black 95%,transparent 100%);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,black 5%,black 95%,transparent 100%);
+}
+.review-track{
+  display:flex;
+  width:max-content;
+  gap:16px;
+  animation:reviewsFlow 30s linear infinite;
+  will-change:transform;
+}
+.marquee-shell:hover .review-track,
+.marquee-shell:hover .gallery-track{animation-play-state:paused}
+.review{
+  width:min(390px,82vw);
+  flex:0 0 auto;
+  padding:26px;
+  border-radius:17px;
+  border:1px solid var(--line2);
+  background:linear-gradient(145deg,#121212,#0b0b0b);
+  box-shadow:0 16px 40px rgba(0,0,0,.22);
+}
 .stars{color:var(--gold2);letter-spacing:.15em;margin-bottom:14px}
 .review blockquote{line-height:1.7;color:#e8e3d7}
 .reviewer{margin-top:18px;font-weight:800}
 .reviewer span{display:block;color:var(--muted);font-size:.78rem;font-weight:500;margin-top:2px}
+@keyframes reviewsFlow{
+  from{transform:translateX(-50%)}
+  to{transform:translateX(0)}
+}
+
+.gallery-shell{
+  position:relative;
+  overflow:hidden;
+  width:100%;
+  mask-image:linear-gradient(90deg,transparent 0,black 5%,black 95%,transparent 100%);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,black 5%,black 95%,transparent 100%);
+}
+.gallery-track{
+  display:flex;
+  width:max-content;
+  gap:16px;
+  animation:galleryFlow 26s linear infinite;
+  will-change:transform;
+}
+.gallery-tile{
+  width:260px;
+  aspect-ratio:1/1;
+  flex:0 0 auto;
+  border-radius:18px;
+  border:1px solid rgba(217,178,76,.19);
+  background:
+    radial-gradient(circle at 75% 20%,rgba(217,178,76,.10),transparent 30%),
+    linear-gradient(145deg,#121212,#0a0a0a);
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:28px;
+  box-shadow:0 16px 42px rgba(0,0,0,.22);
+  position:relative;
+  overflow:hidden;
+}
+.gallery-tile::before{
+  content:"";
+  position:absolute;
+  inset:14px;
+  border:1px dashed rgba(217,178,76,.18);
+  border-radius:12px;
+}
+.gallery-tile-inner{position:relative;z-index:1}
+.gallery-tile .camera{
+  width:52px;height:52px;margin:0 auto 14px;border-radius:14px;
+  display:grid;place-items:center;color:var(--gold2);
+  border:1px solid var(--line);font-size:1.35rem;
+  background:rgba(217,178,76,.05);
+}
+.gallery-tile strong{display:block;font-size:1rem;color:#eee8d8}
+.gallery-tile span{display:block;color:var(--muted);font-size:.79rem;margin-top:6px}
+@keyframes galleryFlow{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
 
 .cta{width:min(1180px,92%);margin:0 auto 90px;padding:44px 46px;border-radius:24px;border:1px solid var(--line);background:radial-gradient(circle at 90% 20%,rgba(217,178,76,.16),transparent 28%),linear-gradient(145deg,#111,#090909);display:flex;align-items:center;justify-content:space-between;gap:30px}
 .cta h2{font-family:"Playfair Display",serif;font-size:clamp(2rem,4vw,3.5rem);line-height:1.04}
@@ -237,8 +316,8 @@ footer{padding:30px clamp(20px,5.3vw,82px) 90px;border-top:1px solid var(--line2
 .delay1{transition-delay:.08s}.delay2{transition-delay:.16s}
 
 @media(max-width:980px){
-.hero-title-row{grid-template-columns:minmax(0,1fr) 132px;gap:22px}
-.hero-logo-badge{width:132px;padding:8px}
+.hero-title-row{grid-template-columns:minmax(0,1fr) 155px;gap:22px}
+.hero-logo-badge{width:155px;padding:8px}
 
 .brand-icon{width:40px;height:40px}
 .brand-copy strong{font-size:.9rem}
@@ -256,16 +335,19 @@ nav a:not(.nav-cta){display:none}
 .service-band a:nth-child(-n+3){border-bottom:1px solid var(--line2)}
 .services-grid{grid-template-columns:repeat(2,1fr)}
 .split{grid-template-columns:1fr}
-.reviews{grid-template-columns:1fr}
 }
 @media(max-width:640px){
+.review{width:min(340px,82vw);padding:22px}
+.gallery-tile{width:220px}
+.review-track,.gallery-track{gap:12px}
+
 .hero-title-row{
-  grid-template-columns:minmax(0,1fr) 112px;
+  grid-template-columns:minmax(0,1fr) 132px;
   gap:14px;
   align-items:center;
 }
 .hero-logo-badge{
-  width:112px;
+  width:132px;
   padding:7px;
   border-radius:14px;
   justify-self:end;
@@ -295,7 +377,10 @@ section{padding:76px 18px}
 footer{padding:28px 18px 100px}
 .contact-fab{right:13px;bottom:13px}
 }
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important}}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
+  .marquee-shell,.gallery-shell{overflow-x:auto;mask-image:none;-webkit-mask-image:none}
+}
 </style>
 </head>
 <body>
@@ -316,7 +401,7 @@ footer{padding:28px 18px 100px}
     </div>
   </a>
   <nav>
-    <a href="#home">Home</a><a href="#services">Services</a><a href="#about">About</a><a href="#reviews">Reviews</a>
+    <a href="#home">Home</a><a href="#services">Services</a><a href="#about">About</a><a href="#gallery">Gallery</a><a href="#reviews">Reviews</a>
     <a href="#contact" class="nav-cta open-contact">Get a Quote</a>
   </nav>
 </header>
@@ -391,16 +476,39 @@ footer{padding:28px 18px 100px}
   </div>
 </section>
 
+
+<section id="gallery">
+  <div class="section-head reveal">
+    <div class="kicker">Michael’s Work</div>
+    <h2>Recent projects.</h2>
+    <p>A gallery of Michael’s completed work is coming soon. Once photos are added, they’ll automatically scroll through here.</p>
+  </div>
+  <div class="gallery-shell reveal" aria-label="Work gallery">
+    <div class="gallery-track">
+      <article class="gallery-tile"><div class="gallery-tile-inner"><div class="camera">▣</div><strong>Images coming soon</strong><span>Michael’s completed work will appear here.</span></div></article><article class="gallery-tile"><div class="gallery-tile-inner"><div class="camera">▣</div><strong>Images coming soon</strong><span>Michael’s completed work will appear here.</span></div></article><article class="gallery-tile"><div class="gallery-tile-inner"><div class="camera">▣</div><strong>Images coming soon</strong><span>Michael’s completed work will appear here.</span></div></article><article class="gallery-tile"><div class="gallery-tile-inner"><div class="camera">▣</div><strong>Images coming soon</strong><span>Michael’s completed work will appear here.</span></div></article><article class="gallery-tile"><div class="gallery-tile-inner"><div class="camera">▣</div><strong>Images coming soon</strong><span>Michael’s completed work will appear here.</span></div></article><article class="gallery-tile"><div class="gallery-tile-inner"><div class="camera">▣</div><strong>Images coming soon</strong><span>Michael’s completed work will appear here.</span></div></article>
+      <article class="gallery-tile"><div class="gallery-tile-inner"><div class="camera">▣</div><strong>Images coming soon</strong><span>Michael’s completed work will appear here.</span></div></article><article class="gallery-tile"><div class="gallery-tile-inner"><div class="camera">▣</div><strong>Images coming soon</strong><span>Michael’s completed work will appear here.</span></div></article><article class="gallery-tile"><div class="gallery-tile-inner"><div class="camera">▣</div><strong>Images coming soon</strong><span>Michael’s completed work will appear here.</span></div></article><article class="gallery-tile"><div class="gallery-tile-inner"><div class="camera">▣</div><strong>Images coming soon</strong><span>Michael’s completed work will appear here.</span></div></article><article class="gallery-tile"><div class="gallery-tile-inner"><div class="camera">▣</div><strong>Images coming soon</strong><span>Michael’s completed work will appear here.</span></div></article><article class="gallery-tile"><div class="gallery-tile-inner"><div class="camera">▣</div><strong>Images coming soon</strong><span>Michael’s completed work will appear here.</span></div></article>
+    </div>
+  </div>
+</section>
+
 <section id="reviews">
   <div class="section-head reveal">
     <div class="kicker">Customer Reviews</div>
     <h2>Recommended by local customers.</h2>
     <p>Real feedback from people who have used Michael for jobs around their homes.</p>
   </div>
-  <div class="reviews">
-    <article class="review reveal"><div class="stars">★★★★★</div><blockquote>“After being let down by another contractor at the last minute, I contacted Michael and he was able to come out within the hour. His price was very fair and the standard of work was excellent. Really reliable and I wouldn’t hesitate to use him again.”</blockquote><div class="reviewer">Sarah<span>Local customer</span></div></article>
-    <article class="review reveal delay1"><div class="stars">★★★★★</div><blockquote>“Michael fitted three bookshelves and wall-mounted my TV for me. Everything was fitted neatly and securely and he did a brilliant job. Very professional and highly recommended.”</blockquote><div class="reviewer">Dave<span>Local customer</span></div></article>
-    <article class="review reveal delay2"><div class="stars">★★★★★</div><blockquote>“I contacted Michael through Facebook for a few jobs I needed doing around the house. He was friendly, reliable and did a great job with everything I asked. I’d definitely recommend him.”</blockquote><div class="reviewer">Lauren<span>Local customer</span></div></article>
+  <div class="marquee-shell reveal" aria-label="Customer reviews">
+    <div class="review-track">
+
+    <article class="review"><div class="stars">★★★★★</div><blockquote>“After being let down by another contractor at the last minute, I contacted Michael and he was able to come out within the hour. His price was very fair and the standard of work was excellent. Really reliable and I wouldn’t hesitate to use him again.”</blockquote><div class="reviewer">Sarah<span>Local customer</span></div></article>
+    <article class="review"><div class="stars">★★★★★</div><blockquote>“Michael fitted three bookshelves and wall-mounted my TV for me. Everything was fitted neatly and securely and he did a brilliant job. Very professional and highly recommended.”</blockquote><div class="reviewer">Dave<span>Local customer</span></div></article>
+    <article class="review"><div class="stars">★★★★★</div><blockquote>“I contacted Michael through Facebook for a few jobs I needed doing around the house. He was friendly, reliable and did a great job with everything I asked. I’d definitely recommend him.”</blockquote><div class="reviewer">Lauren<span>Local customer</span></div></article>
+
+    <article class="review"><div class="stars">★★★★★</div><blockquote>“After being let down by another contractor at the last minute, I contacted Michael and he was able to come out within the hour. His price was very fair and the standard of work was excellent. Really reliable and I wouldn’t hesitate to use him again.”</blockquote><div class="reviewer">Sarah<span>Local customer</span></div></article>
+    <article class="review"><div class="stars">★★★★★</div><blockquote>“Michael fitted three bookshelves and wall-mounted my TV for me. Everything was fitted neatly and securely and he did a brilliant job. Very professional and highly recommended.”</blockquote><div class="reviewer">Dave<span>Local customer</span></div></article>
+    <article class="review"><div class="stars">★★★★★</div><blockquote>“I contacted Michael through Facebook for a few jobs I needed doing around the house. He was friendly, reliable and did a great job with everything I asked. I’d definitely recommend him.”</blockquote><div class="reviewer">Lauren<span>Local customer</span></div></article>
+
+    </div>
   </div>
 </section>
 
