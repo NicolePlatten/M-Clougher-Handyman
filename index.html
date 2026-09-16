@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M.Clougher Handyman Services | Castle Bromwich</title>
+<meta name="description" content="Reliable local handyman services in Castle Bromwich and surrounding areas. Repairs, flat-pack assembly, wall mounting, furniture building, home maintenance and odd jobs.">
+<meta name="theme-color" content="#0a0a0a">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#070707;
+  --bg2:#0d0d0d;
+  --panel:#111;
+  --panel2:#151515;
+  --gold:#d4af37;
+  --gold2:#f1d277;
+  --gold3:#9b7420;
+  --cream:#f7f0dd;
+  --text:#f5f5f2;
+  --muted:#b9b7b0;
+  --line:rgba(212,175,55,.24);
+  --shadow:0 18px 60px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"DM Sans",sans-serif;
+  background:
+    radial-gradient(circle at 15% 10%,rgba(212,175,55,.06),transparent 26%),
+    radial-gradient(circle at 80% 20%,rgba(212,175,55,.05),transparent 28%),
+    var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+body.modal-open{overflow:hidden}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+img{max-width:100%;display:block}
+
+.page-noise,
+.page-grid{
+  position:fixed;inset:0;pointer-events:none;z-index:-2;
+}
+.page-noise{
+  opacity:.1;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.26'/%3E%3C/svg%3E");
+}
+.page-grid{
+  z-index:-3;
+  opacity:.13;
+  background-image:
+    linear-gradient(rgba(212,175,55,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(212,175,55,.07) 1px,transparent 1px);
+  background-size:56px 56px;
+  mask-image:linear-gradient(to bottom,black,transparent 72%);
+}
+
+.gold-orb{
+  position:fixed;border-radius:50%;filter:blur(55px);opacity:.09;pointer-events:none;z-index:-1;
+  background:var(--gold);
+  animation:floatOrb 10s ease-in-out infinite alternate;
+}
+.orb-a{width:220px;height:220px;left:-60px;top:26%}
+.orb-b{width:300px;height:300px;right:-100px;top:55%;animation-delay:-3s}
+@keyframes floatOrb{to{transform:translate3d(30px,-50px,0) scale(1.15)}}
+
+.site-header{
+  position:fixed;left:0;right:0;top:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px clamp(18px,4vw,64px);
+  transition:.3s ease;
+  background:linear-gradient(to bottom,rgba(5,5,5,.86),rgba(5,5,5,.38),transparent);
+}
+.site-header.scrolled{
+  backdrop-filter:blur(18px);
+  background:rgba(7,7,7,.82);
+  border-bottom:1px solid rgba(212,175,55,.12);
+}
+.brand{display:flex;gap:12px;align-items:center}
+.brand-mark{
+  width:44px;height:44px;border:1px solid var(--gold);
+  border-radius:12px;display:grid;place-items:center;
+  box-shadow:inset 0 0 25px rgba(212,175,55,.06),0 0 24px rgba(212,175,55,.08);
+}
+.brand-mark svg{width:25px;stroke:var(--gold2)}
+.brand-copy strong{font-size:.9rem;letter-spacing:.08em}
+.brand-copy span{display:block;color:var(--gold2);font-size:.63rem;letter-spacing:.18em;margin-top:2px}
+nav{display:flex;gap:28px;align-items:center}
+nav a{font-size:.86rem;color:#d9d7d0;position:relative}
+nav a:not(.nav-cta)::after{
+  content:"";position:absolute;left:0;right:100%;bottom:-6px;height:1px;background:var(--gold);transition:.3s;
+}
+nav a:hover::after{right:0}
+.nav-cta,.btn-primary{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  background:linear-gradient(135deg,var(--gold2),var(--gold));
+  color:#111;padding:12px 18px;border-radius:12px;font-weight:800;
+  box-shadow:0 10px 30px rgba(212,175,55,.18);
+  transition:.25s ease;
+}
+.nav-cta:hover,.btn-primary:hover{transform:translateY(-2px);box-shadow:0 15px 38px rgba(212,175,55,.28)}
+
+.hero{
+  min-height:100svh;display:grid;grid-template-columns:1.08fr .92fr;
+  align-items:center;gap:4vw;
+  padding:120px clamp(22px,6vw,90px) 60px;
+  position:relative;overflow:hidden;
+}
+.hero::after{
+  content:"";position:absolute;left:6vw;right:6vw;bottom:20px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.35;
+}
+.eyebrow{
+  display:flex;align-items:center;gap:11px;color:var(--gold2);
+  text-transform:uppercase;letter-spacing:.18em;font-size:.75rem;font-weight:700;margin-bottom:18px;
+}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--gold)}
+.hero h1{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(3rem,7vw,7rem);line-height:.92;letter-spacing:-.04em;max-width:770px;
+}
+.hero h1 .gold{color:var(--gold2)}
+.hero-sub{
+  font-size:clamp(1rem,1.6vw,1.2rem);color:var(--muted);max-width:640px;
+  line-height:1.7;margin:26px 0 28px;
+}
+.location-row{
+  display:flex;gap:12px;align-items:center;color:#e4e0d5;margin-bottom:30px;
+}
+.location-dot{
+  width:34px;height:34px;border:1px solid var(--line);border-radius:10px;display:grid;place-items:center;color:var(--gold2);
+}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn-secondary{
+  display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;
+  border:1px solid rgba(255,255,255,.16);border-radius:12px;color:#fff;background:rgba(255,255,255,.025);
+  transition:.25s;
+}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold2);transform:translateY(-2px)}
+
+.hero-visual{position:relative;min-height:580px;display:grid;place-items:center}
+.tool-card{
+  width:min(500px,92%);aspect-ratio:.82;border-radius:30px;position:relative;overflow:hidden;
+  background:
+   linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.005)),
+   radial-gradient(circle at 70% 20%,rgba(212,175,55,.16),transparent 28%),
+   #0b0b0b;
+  border:1px solid rgba(212,175,55,.18);
+  box-shadow:0 40px 90px rgba(0,0,0,.55);
+  transform:perspective(900px) rotateY(-6deg) rotateX(3deg);
+  transition:.25s ease;
+}
+.tool-card::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(120deg,transparent 15%,rgba(255,255,255,.06),transparent 45%);
+  transform:translateX(-120%);animation:shine 6s infinite;
+}
+@keyframes shine{50%,100%{transform:translateX(130%)}}
+.hero-tool{
+  position:absolute;left:50%;top:50%;width:62%;transform:translate(-50%,-48%) rotate(-11deg);
+  filter:drop-shadow(0 35px 28px rgba(0,0,0,.6));
+}
+.hero-tool svg{width:100%;height:auto}
+.tool-card-copy{
+  position:absolute;left:28px;bottom:24px;z-index:3;
+}
+.tool-card-copy span{display:block;color:var(--gold2);font-family:"Playfair Display",serif;font-size:2.1rem}
+.tool-card-copy small{color:#c4c1b8;letter-spacing:.12em;text-transform:uppercase}
+.spark{position:absolute;width:5px;height:5px;border-radius:50%;background:var(--gold2);box-shadow:0 0 15px var(--gold);animation:spark 3.8s ease-in-out infinite}
+.s1{left:13%;top:22%}.s2{right:15%;top:27%;animation-delay:-1.1s}.s3{right:23%;bottom:18%;animation-delay:-2s}
+@keyframes spark{0%,100%{transform:scale(.5);opacity:.15}50%{transform:scale(1.5);opacity:1}}
+
+.stat-strip{
+  width:min(1150px,90%);margin:-14px auto 0;display:grid;grid-template-columns:repeat(4,1fr);
+  border:1px solid var(--line);border-radius:20px;overflow:hidden;background:rgba(16,16,16,.82);backdrop-filter:blur(16px);
+}
+.stat{padding:20px;text-align:center;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}.stat strong{display:block;color:var(--gold2);font-size:1.1rem}.stat span{font-size:.78rem;color:var(--muted)}
+
+section{padding:100px clamp(22px,6vw,90px)}
+.section-head{max-width:800px;margin-bottom:40px}
+.section-kicker{color:var(--gold2);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:800}
+.section-head h2{
+  font-family:"Playfair Display",serif;font-size:clamp(2.1rem,4vw,4rem);line-height:1.05;margin:10px 0 16px
+}
+.section-head p{color:var(--muted);line-height:1.75;max-width:700px}
+
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.service-card{
+  position:relative;padding:28px;border-radius:18px;min-height:230px;overflow:hidden;
+  background:linear-gradient(145deg,#131313,#0c0c0c);border:1px solid rgba(255,255,255,.07);
+  transition:.35s cubic-bezier(.2,.8,.2,1);
+}
+.service-card::after{
+  content:"";position:absolute;inset:auto -20% -45% 20%;height:120px;
+  background:radial-gradient(circle,rgba(212,175,55,.17),transparent 68%);opacity:0;transition:.35s;
+}
+.service-card:hover{transform:translateY(-8px);border-color:rgba(212,175,55,.35)}
+.service-card:hover::after{opacity:1}
+.service-icon{
+  width:48px;height:48px;border-radius:14px;border:1px solid var(--line);display:grid;place-items:center;
+  color:var(--gold2);margin-bottom:22px;background:rgba(212,175,55,.04)
+}
+.service-icon svg{width:22px}
+.service-card h3{font-size:1.08rem;margin-bottom:10px}
+.service-card p{color:var(--muted);font-size:.92rem;line-height:1.65}
+
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.why-panel{
+  padding:34px;border-radius:24px;background:linear-gradient(145deg,#121212,#0a0a0a);
+  border:1px solid var(--line);box-shadow:var(--shadow)
+}
+.why-item{display:flex;gap:16px;padding:17px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.why-item:last-child{border-bottom:0}.tick{width:30px;height:30px;border-radius:50%;background:rgba(212,175,55,.1);color:var(--gold2);display:grid;place-items:center;flex:0 0 auto}
+.why-item strong{display:block;margin-bottom:4px}.why-item span{color:var(--muted);font-size:.9rem}
+
+.review-wrap{position:relative}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.review-card{
+  position:relative;padding:28px;border-radius:20px;
+  background:linear-gradient(145deg,#121212,#0b0b0b);border:1px solid rgba(255,255,255,.07);
+}
+.stars{color:var(--gold2);letter-spacing:.15em;margin-bottom:18px}
+.review-card blockquote{color:#e6e3da;line-height:1.75;margin-bottom:20px}
+.reviewer{display:flex;align-items:center;gap:12px}
+.avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:rgba(212,175,55,.13);color:var(--gold2);font-weight:800}
+.reviewer span{color:var(--muted);font-size:.84rem}
+
+.cta{
+  width:min(1180px,90%);margin:0 auto 100px;border-radius:28px;padding:50px;
+  background:
+    radial-gradient(circle at 85% 10%,rgba(212,175,55,.18),transparent 26%),
+    linear-gradient(145deg,#121212,#090909);
+  border:1px solid var(--line);position:relative;overflow:hidden;
+}
+.cta h2{font-family:"Playfair Display",serif;font-size:clamp(2rem,5vw,4rem);max-width:700px;line-height:1.03}
+.cta p{color:var(--muted);margin:16px 0 24px;max-width:650px;line-height:1.7}
+
+footer{
+  padding:35px clamp(22px,6vw,90px);border-top:1px solid rgba(255,255,255,.06);
+  display:flex;justify-content:space-between;gap:20px;color:#8e8b84;font-size:.82rem;flex-wrap:wrap
+}
+
+/* Floating contact */
+.contact-fab{
+  position:fixed;right:22px;bottom:22px;z-index:70;border:0;cursor:pointer;
+  display:flex;align-items:center;gap:10px;padding:14px 17px;border-radius:999px;
+  background:linear-gradient(135deg,var(--gold2),var(--gold));color:#111;font-weight:900;
+  box-shadow:0 12px 35px rgba(212,175,55,.28);
+  animation:pulseGlow 2.2s ease-in-out infinite;
+}
+@keyframes pulseGlow{
+  0%,100%{box-shadow:0 12px 35px rgba(212,175,55,.22)}
+  50%{box-shadow:0 12px 48px rgba(212,175,55,.5),0 0 0 8px rgba(212,175,55,.05)}
+}
+.contact-fab svg{width:18px}
+
+.contact-modal{
+  position:fixed;inset:0;z-index:100;display:grid;place-items:end center;
+  background:rgba(0,0,0,.58);backdrop-filter:blur(8px);
+  opacity:0;pointer-events:none;transition:.25s;
+}
+.contact-modal.open{opacity:1;pointer-events:auto}
+.contact-sheet{
+  width:min(620px,100%);background:linear-gradient(180deg,#151515,#0a0a0a);
+  border:1px solid rgba(212,175,55,.28);border-bottom:0;
+  border-radius:26px 26px 0 0;padding:24px 22px 30px;
+  transform:translateY(105%);transition:.4s cubic-bezier(.2,.9,.2,1);
+  box-shadow:0 -35px 80px rgba(0,0,0,.5);
+}
+.contact-modal.open .contact-sheet{transform:translateY(0)}
+.sheet-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.sheet-top h3{font-family:"Playfair Display",serif;font-size:1.7rem}
+.close-btn{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.1);background:#111;color:#fff;cursor:pointer}
+.contact-sheet p{color:var(--muted);margin-bottom:20px}
+.contact-options{display:grid;gap:12px}
+.contact-option{
+  display:flex;align-items:center;gap:15px;padding:16px;border-radius:15px;
+  border:1px solid rgba(255,255,255,.08);background:#111;transition:.25s;
+}
+.contact-option:hover{border-color:var(--gold);transform:translateX(4px)}
+.contact-option .ico{width:42px;height:42px;border-radius:12px;background:rgba(212,175,55,.1);display:grid;place-items:center;color:var(--gold2)}
+.contact-option strong{display:block}.contact-option span{color:var(--muted);font-size:.82rem}
+
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:.08s}.reveal-delay-2{transition-delay:.16s}.reveal-delay-3{transition-delay:.24s}
+
+@media (max-width:980px){
+  nav a:not(.nav-cta){display:none}
+  .hero{grid-template-columns:1fr;padding-top:118px}
+  .hero-visual{min-height:470px}
+  .tool-card{max-width:430px}
+  .stat-strip{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(2){border-right:0}
+  .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .why-grid{grid-template-columns:1fr}
+  .reviews{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .brand-copy strong{font-size:.76rem}.brand-copy span{font-size:.55rem}
+  .brand-mark{width:39px;height:39px}.nav-cta{padding:10px 13px;font-size:.78rem}
+  .hero{padding:105px 20px 52px;gap:8px}
+  .hero h1{font-size:clamp(3.15rem,17vw,5rem)}
+  .hero-sub{font-size:.98rem;margin:20px 0}
+  .hero-visual{min-height:390px}
+  .tool-card{width:90%;border-radius:22px}
+  .tool-card-copy span{font-size:1.6rem}
+  .stat-strip{width:calc(100% - 28px)}
+  section{padding:78px 20px}
+  .services-grid{grid-template-columns:1fr}
+  .cta{width:calc(100% - 28px);padding:32px 24px;margin-bottom:80px}
+  footer{padding:30px 20px 100px}
+  .contact-fab{right:14px;bottom:14px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+
+<body>
+<div class="page-noise"></div>
+<div class="page-grid"></div>
+<div class="gold-orb orb-a"></div>
+<div class="gold-orb orb-b"></div>
+
+<header class="site-header" id="siteHeader">
+  <a href="#home" class="brand" aria-label="M.Clougher Handyman Services home">
+    <div class="brand-mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7">
+        <path d="M3 11.5 12 4l9 7.5"/>
+        <path d="M5.5 10.5V20h13v-9.5"/>
+        <path d="M9 20v-5h6v5"/>
+      </svg>
+    </div>
+    <div class="brand-copy">
+      <strong>M.CLOUGHER</strong>
+      <span>HANDYMAN SERVICES</span>
+    </div>
+  </a>
+
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#about">Why Michael</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact" class="nav-cta open-contact">Get a Quote</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-copy">
+    <div class="eyebrow reveal">Reliable • Local • Professional</div>
+    <h1 class="reveal reveal-delay-1">Reliable Local <span class="gold">Handyman</span> Services</h1>
+    <p class="hero-sub reveal reveal-delay-2">
+      Friendly, practical help for the jobs around your home — from repairs and flat-pack assembly
+      to furniture building, wall mounting, maintenance and odd jobs.
+    </p>
+
+    <div class="location-row reveal reveal-delay-2">
+      <div class="location-dot">⌖</div>
+      <span>Castle Bromwich & surrounding areas</span>
+    </div>
+
+    <div class="hero-actions reveal reveal-delay-3">
+      <button class="btn-primary open-contact" type="button">Get a Quote <span>→</span></button>
+      <a href="#services" class="btn-secondary">View Services</a>
+    </div>
+  </div>
+
+  <div class="hero-visual reveal reveal-delay-2" id="heroVisual">
+    <div class="tool-card" id="toolCard">
+      <div class="spark s1"></div><div class="spark s2"></div><div class="spark s3"></div>
+      <div class="hero-tool" aria-hidden="true">
+        <svg viewBox="0 0 400 520">
+          <defs>
+            <linearGradient id="steel" x1="0" x2="1">
+              <stop offset="0" stop-color="#7f7f7f"/>
+              <stop offset=".35" stop-color="#d7d7d7"/>
+              <stop offset=".7" stop-color="#8f8f8f"/>
+              <stop offset="1" stop-color="#555"/>
+            </linearGradient>
+            <linearGradient id="goldHandle" x1="0" x2="1">
+              <stop offset="0" stop-color="#7b5515"/>
+              <stop offset=".45" stop-color="#d4af37"/>
+              <stop offset="1" stop-color="#6d4d16"/>
+            </linearGradient>
+          </defs>
+          <g transform="rotate(-17 200 260)">
+            <rect x="172" y="170" width="56" height="290" rx="24" fill="url(#goldHandle)"/>
+            <rect x="158" y="145" width="84" height="58" rx="18" fill="#161616" opacity=".85"/>
+            <path d="M105 120c56-54 119-66 190-29l-11 34c-47-15-86-6-116 23l-63-28Z" fill="url(#steel)"/>
+            <path d="M291 91c30 7 52 22 67 46l-23 16c-18-18-37-27-58-30l14-32Z" fill="#777"/>
+            <path d="M111 122c-14 2-25 11-32 26l25 9c9-7 19-9 31-7l-24-28Z" fill="#aaa"/>
+          </g>
+        </svg>
+      </div>
+      <div class="tool-card-copy">
+        <span>Jobs done right.</span>
+        <small>Small jobs. Big difference.</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stat-strip reveal">
+  <div class="stat"><strong>Reliable</strong><span>Turns up when agreed</span></div>
+  <div class="stat"><strong>Local</strong><span>Castle Bromwich area</span></div>
+  <div class="stat"><strong>Practical</strong><span>Problem-solving mindset</span></div>
+  <div class="stat"><strong>Friendly</strong><span>Respectful in your home</span></div>
+</div>
+
+<section id="services">
+  <div class="section-head reveal">
+    <div class="section-kicker">What Michael can help with</div>
+    <h2>Everyday jobs, professionally handled.</h2>
+    <p>For those jobs that need doing properly without the hassle of chasing unreliable tradespeople.</p>
+  </div>
+
+  <div class="services-grid">
+    <article class="service-card reveal">
+      <div class="service-icon">🔧</div>
+      <h3>General Repairs</h3>
+      <p>Small household repairs, fixes and practical jobs completed neatly and reliably.</p>
+    </article>
+    <article class="service-card reveal reveal-delay-1">
+      <div class="service-icon">🪑</div>
+      <h3>Furniture Building</h3>
+      <p>Assembly and setup of household furniture, including awkward or more involved builds.</p>
+    </article>
+    <article class="service-card reveal reveal-delay-2">
+      <div class="service-icon">📦</div>
+      <h3>Flat-Pack Assembly</h3>
+      <p>Wardrobes, drawers, beds, shelving units and other flat-pack furniture assembled correctly.</p>
+    </article>
+    <article class="service-card reveal">
+      <div class="service-icon">📺</div>
+      <h3>Wall Mounting</h3>
+      <p>TVs, shelves, pictures and other household items mounted securely and with care.</p>
+    </article>
+    <article class="service-card reveal reveal-delay-1">
+      <div class="service-icon">🏠</div>
+      <h3>Home Maintenance</h3>
+      <p>Help keeping your home in good order, including those smaller maintenance tasks that build up.</p>
+    </article>
+    <article class="service-card reveal reveal-delay-2">
+      <div class="service-icon">⚙️</div>
+      <h3>Odd Jobs</h3>
+      <p>Not sure what category your job falls into? Send Michael a message and ask for a quote.</p>
+    </article>
+  </div>
+</section>
+
+<section id="about">
+  <div class="why-grid">
+    <div class="section-head reveal">
+      <div class="section-kicker">Why choose Michael</div>
+      <h2>A reliable pair of hands.</h2>
+      <p>
+        Michael brings years of hands-on experience, customer-facing work and practical problem-solving.
+        His background includes furniture delivery and installation, maintenance work and working in customers'
+        homes across the country.
+      </p>
+    </div>
+
+    <div class="why-panel reveal reveal-delay-1">
+      <div class="why-item">
+        <div class="tick">✓</div>
+        <div><strong>Extremely punctual</strong><span>Reliable timekeeping and respectful of your time.</span></div>
+      </div>
+      <div class="why-item">
+        <div class="tick">✓</div>
+        <div><strong>Practical problem solver</strong><span>Used to awkward spaces, difficult access and finding sensible solutions.</span></div>
+      </div>
+      <div class="why-item">
+        <div class="tick">✓</div>
+        <div><strong>Friendly & professional</strong><span>Comfortable working in customers' homes and communicating clearly.</span></div>
+      </div>
+      <div class="why-item">
+        <div class="tick">✓</div>
+        <div><strong>Fair, straightforward service</strong><span>Clear communication without unnecessary complications.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="section-head reveal">
+    <div class="section-kicker">Customer reviews</div>
+    <h2>Recommended by local customers.</h2>
+    <p>Real feedback from people who have used Michael for jobs around their homes.</p>
+  </div>
+
+  <div class="reviews">
+    <article class="review-card reveal">
+      <div class="stars">★★★★★</div>
+      <blockquote>“After being let down by another contractor at the last minute, I contacted Michael and he was able to come out within the hour. His price was very fair and the standard of work was excellent. Really reliable and I wouldn’t hesitate to use him again.”</blockquote>
+      <div class="reviewer"><div class="avatar">S</div><div><strong>Sarah</strong><span>Local customer</span></div></div>
+    </article>
+
+    <article class="review-card reveal reveal-delay-1">
+      <div class="stars">★★★★★</div>
+      <blockquote>“Michael fitted three bookshelves and wall-mounted my TV for me. Everything was fitted neatly and securely and he did a brilliant job. Very professional and highly recommended.”</blockquote>
+      <div class="reviewer"><div class="avatar">D</div><div><strong>Dave</strong><span>Local customer</span></div></div>
+    </article>
+
+    <article class="review-card reveal reveal-delay-2">
+      <div class="stars">★★★★★</div>
+      <blockquote>“I contacted Michael through Facebook for a few jobs I needed doing around the house. He was friendly, reliable and did a great job with everything I asked. I’d definitely recommend him.”</blockquote>
+      <div class="reviewer"><div class="avatar">L</div><div><strong>Lauren</strong><span>Local customer</span></div></div>
+    </article>
+  </div>
+</section>
+
+<section class="cta reveal" id="contact">
+  <div class="section-kicker">Need a hand?</div>
+  <h2>Got a job you’ve been putting off?</h2>
+  <p>Send Michael a quick message, call directly, or contact him through Facebook to discuss the job and get a quote.</p>
+  <button class="btn-primary open-contact" type="button">Contact Michael <span>→</span></button>
+</section>
+</main>
+
+<footer>
+  <div>© <span id="year"></span> M.Clougher Handyman Services</div>
+  <div>Castle Bromwich & surrounding areas • 07724 399685</div>
+</footer>
+
+<button class="contact-fab open-contact" type="button" aria-label="Contact Michael">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/>
+  </svg>
+  Contact Michael
+</button>
+
+<div class="contact-modal" id="contactModal" aria-hidden="true">
+  <div class="contact-sheet" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
+    <div class="sheet-top">
+      <h3 id="contactTitle">Contact Michael</h3>
+      <button class="close-btn" id="closeModal" type="button" aria-label="Close">✕</button>
+    </div>
+    <p>Choose the easiest way to get in touch.</p>
+
+    <div class="contact-options">
+      <a class="contact-option" href="https://wa.me/447724399685?text=Hi%20Michael%20-%20I%20am%20after%20a%20quote%20please" target="_blank" rel="noopener">
+        <div class="ico">💬</div>
+        <div><strong>WhatsApp Michael</strong><span>Message pre-filled and ready to send</span></div>
+      </a>
+
+      <a class="contact-option" href="tel:+447724399685">
+        <div class="ico">📞</div>
+        <div><strong>Call Michael</strong><span>07724 399685</span></div>
+      </a>
+
+      <a class="contact-option" href="https://www.facebook.com/share/19gEhT4pK6/?mibextid=wwXIfr" target="_blank" rel="noopener">
+        <div class="ico">f</div>
+        <div><strong>Facebook</strong><span>Open Michael’s Facebook page</span></div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+const header = document.getElementById('siteHeader');
+const modal = document.getElementById('contactModal');
+const closeModal = document.getElementById('closeModal');
+const openButtons = document.querySelectorAll('.open-contact');
+const toolCard = document.getElementById('toolCard');
+const heroVisual = document.getElementById('heroVisual');
+
+window.addEventListener('scroll',()=>{
+  header.classList.toggle('scrolled', window.scrollY > 30);
+});
+
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting) entry.target.classList.add('visible');
+  });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+function openContact(){
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden','false');
+  document.body.classList.add('modal-open');
+}
+function closeContact(){
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden','true');
+  document.body.classList.remove('modal-open');
+}
+openButtons.forEach(btn=>btn.addEventListener('click', e=>{
+  if(btn.tagName === 'A') e.preventDefault();
+  openContact();
+}));
+closeModal.addEventListener('click',closeContact);
+modal.addEventListener('click',e=>{ if(e.target===modal) closeContact(); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeContact(); });
+
+if(window.matchMedia('(pointer:fine)').matches){
+  heroVisual.addEventListener('mousemove',e=>{
+    const r = heroVisual.getBoundingClientRect();
+    const x = (e.clientX-r.left)/r.width-.5;
+    const y = (e.clientY-r.top)/r.height-.5;
+    toolCard.style.transform = `perspective(900px) rotateY(${x*12-6}deg) rotateX(${-y*8+3}deg) translateY(-2px)`;
+  });
+  heroVisual.addEventListener('mouseleave',()=>{
+    toolCard.style.transform='perspective(900px) rotateY(-6deg) rotateX(3deg)';
+  });
+}
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
