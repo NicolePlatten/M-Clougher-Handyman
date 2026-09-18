@@ -1028,3 +1028,52 @@ body{
     text-overflow:ellipsis;
   }
 }
+
+
+/* ===== COMPACT MOBILE HERO COPY ===== */
+.hero-title-mobile{display:none}
+
+@media (max-width:680px){
+  .hero-title-desktop{display:none}
+  .hero-title-mobile{display:inline}
+
+  .hero{
+    padding-top:80px;
+    gap:16px;
+  }
+
+  .eyebrow{
+    padding:7px 10px;
+    font-size:.58rem;
+    letter-spacing:.12em;
+  }
+
+  .hero h1{
+    max-width:8.8em;
+    font-size:clamp(2rem,9.2vw,2.48rem);
+    line-height:1.02;
+    margin-top:12px;
+    letter-spacing:-.025em;
+  }
+
+  .hero-lede{
+    max-width:31em;
+    margin-top:11px;
+    font-size:.89rem;
+    line-height:1.52;
+  }
+
+  .hero-sub{
+    display:none;
+  }
+
+  .hero-actions{
+    margin-top:14px;
+    gap:8px;
+  }
+
+  .btn{
+    min-height:47px;
+    font-size:.83rem;
+  }
+}
