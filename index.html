@@ -5,199 +5,477 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>M.Clougher Handyman Services | Castle Bromwich</title>
   <meta name="description" content="Reliable local handyman services in Castle Bromwich and surrounding areas. Repairs, flat-pack assembly, furniture building, wall mounting, maintenance and odd jobs.">
-  <meta name="theme-color" content="#0b0d0d">
-  <link rel="icon" href="mclougher-logo.png">
+  <meta name="theme-color" content="#0d0f10">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="website">
   <meta property="og:title" content="M.Clougher Handyman Services">
   <meta property="og:description" content="Reliable local handyman services in Castle Bromwich & surrounding areas. Small jobs. Big difference.">
   <meta property="og:image" content="social-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="M.Clougher Handyman Services social preview">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="M.Clougher Handyman Services">
+  <meta name="twitter:description" content="Reliable local handyman services in Castle Bromwich & surrounding areas.">
+  <meta name="twitter:image" content="social-preview.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="page-progress" id="pageProgress"></div>
-  <div class="ambient-grid" aria-hidden="true"></div>
+  <div class="site-noise" aria-hidden="true"></div>
+  <div class="site-orb site-orb-a" aria-hidden="true"></div>
+  <div class="site-orb site-orb-b" aria-hidden="true"></div>
   <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
   <header class="site-header" id="header">
-    <a class="brand" href="#home" aria-label="M.Clougher Handyman Services home">
-      <span class="brand-monogram">MC</span>
-      <span class="brand-copy"><strong>M.CLOUGHER</strong><small>HANDYMAN SERVICES</small></span>
-    </a>
-    <nav aria-label="Primary navigation">
-      <a href="#services">Services</a>
-      <a href="#how-it-works">How it works</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#reviews">Reviews</a>
-      <button class="nav-cta open-contact">Get a quote <span>↗</span></button>
-    </nav>
+    <div class="header-shell">
+      <a class="brand" href="#home" aria-label="M.Clougher Handyman Services home">
+        <img src="brand-mark.svg" alt="M.Clougher brand mark" class="brand-mark">
+        <span class="brand-copy">
+          <strong>M.CLOUGHER</strong>
+          <small>HANDYMAN SERVICES</small>
+        </span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" id="siteNav" aria-label="Primary navigation">
+        <a href="#services">Services</a>
+        <a href="#about">Why Michael</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#areas">Areas</a>
+        <button class="nav-cta open-contact" type="button">Get a quote <span>↗</span></button>
+      </nav>
+    </div>
   </header>
 
   <main>
     <section class="hero" id="home">
       <div class="hero-copy">
         <div class="eyebrow reveal"><span></span> Castle Bromwich &amp; surrounding areas</div>
-        <h1 class="reveal delay-1">Reliable local <em>handyman services.</em></h1>
-        <p class="hero-lede reveal delay-2">Professional help for the jobs around your home that need doing properly — without the fuss.</p>
-        <p class="hero-sub reveal delay-2">General repairs, flat-pack assembly, wall mounting, furniture building, maintenance and practical odd jobs.</p>
+        <div class="hero-brand reveal delay-1">
+          <img src="brand-mark.svg" alt="" aria-hidden="true">
+          <div>
+            <strong>M.Clougher Handyman Services</strong>
+            <small>Small jobs. Big difference.</small>
+          </div>
+        </div>
+        <h1 class="reveal delay-1">Reliable local <em>handyman services</em> that feel simple from start to finish.</h1>
+        <p class="hero-lede reveal delay-2">Professional help for the jobs around your home that need doing properly — without the fuss, the chasing, or the uncertainty.</p>
+        <p class="hero-sub reveal delay-2">General repairs, flat-pack assembly, furniture building, wall mounting, maintenance and practical odd jobs — delivered with clear communication and reliable timekeeping.</p>
         <div class="hero-actions reveal delay-3">
-          <button class="btn btn-primary open-contact">Get a quote <span>↗</span></button>
-          <a href="#services" class="btn btn-ghost">Explore services</a>
+          <button class="btn btn-primary open-contact" type="button">Get a quote <span>↗</span></button>
+          <a href="#services" class="btn btn-secondary">Explore services</a>
         </div>
         <div class="trust-row reveal delay-3">
-          <div><strong>Reliable</strong><span>Turns up when agreed</span></div>
-          <div><strong>Local</strong><span>Castle Bromwich area</span></div>
-          <div><strong>Practical</strong><span>Sensible solutions</span></div>
-          <div><strong>Quality</strong><span>Work done properly</span></div>
+          <article>
+            <strong>Reliable</strong>
+            <span>Turns up when agreed</span>
+          </article>
+          <article>
+            <strong>Local</strong>
+            <span>Castle Bromwich area</span>
+          </article>
+          <article>
+            <strong>Practical</strong>
+            <span>Sensible solutions</span>
+          </article>
+          <article>
+            <strong>Quality</strong>
+            <span>Work done properly</span>
+          </article>
         </div>
       </div>
 
       <div class="hero-visual reveal delay-1">
-        <div class="hero-image-wrap" data-tilt="soft">
-          <img src="hero-handyman.jpg" alt="Handyman at work" class="hero-image">
-          <div class="hero-image-overlay"></div>
-          <div class="hero-stamp">
-            <small>LOCAL • RELIABLE • PRACTICAL</small>
-            <strong>Jobs done right.</strong>
+        <div class="hero-media" data-tilt="soft">
+          <img src="hero-handyman.jpg" alt="Handyman tools and workwear" class="hero-image">
+          <div class="hero-overlay"></div>
+          <div class="hero-panel hero-panel-top">
+            <small>Your local handyman</small>
+            <strong>Professional help for everyday home jobs.</strong>
           </div>
-          <div class="hero-location">Castle Bromwich<br><span>West Midlands</span></div>
+          <div class="hero-panel hero-panel-bottom">
+            <div>
+              <small>Coverage</small>
+              <strong>Castle Bromwich</strong>
+            </div>
+            <div>
+              <small>Services</small>
+              <strong>6 core categories</strong>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <div class="capability-rail reveal" aria-label="Services overview">
+    <section class="service-rail reveal" aria-label="Services overview">
       <a href="#services"><span>01</span><strong>General Repairs</strong></a>
       <a href="#services"><span>02</span><strong>Furniture Building</strong></a>
       <a href="#services"><span>03</span><strong>Flat-Pack Assembly</strong></a>
       <a href="#services"><span>04</span><strong>Wall Mounting</strong></a>
       <a href="#services"><span>05</span><strong>Maintenance</strong></a>
       <a href="#services"><span>06</span><strong>Odd Jobs</strong></a>
-    </div>
+    </section>
 
-    <section id="services" class="section section-services">
-      <div class="section-intro reveal">
+    <section id="services" class="section">
+      <div class="section-head reveal">
         <div class="kicker">Services</div>
         <h2>Practical help for jobs around your home.</h2>
-        <p>Whether it is one small job or a list you have been meaning to get through, Michael offers straightforward, reliable help across Castle Bromwich and surrounding areas.</p>
+        <p>Whether it’s one small job or a list you’ve been meaning to get through, Michael offers straightforward, reliable help across Castle Bromwich and surrounding areas.</p>
       </div>
+
       <div class="services-grid">
-        <article class="service-card reveal" data-tilt><span class="service-no">01</span><h3>General Repairs</h3><p>Everyday household repairs and practical fixes completed carefully and reliably.</p><span class="card-arrow">↗</span></article>
-        <article class="service-card reveal delay-1" data-tilt><span class="service-no">02</span><h3>Furniture Building</h3><p>Assembly, positioning and fitting of household furniture, including awkward builds.</p><span class="card-arrow">↗</span></article>
-        <article class="service-card reveal delay-2" data-tilt><span class="service-no">03</span><h3>Flat-Pack Assembly</h3><p>Wardrobes, beds, drawers, shelving units and more assembled properly from start to finish.</p><span class="card-arrow">↗</span></article>
-        <article class="service-card reveal" data-tilt><span class="service-no">04</span><h3>Wall Mounting</h3><p>TVs, shelving, pictures and other household items mounted neatly and securely.</p><span class="card-arrow">↗</span></article>
-        <article class="service-card reveal delay-1" data-tilt><span class="service-no">05</span><h3>Home Maintenance</h3><p>Help keeping your home in good order and tackling the maintenance jobs that build up.</p><span class="card-arrow">↗</span></article>
-        <article class="service-card reveal delay-2" data-tilt><span class="service-no">06</span><h3>Odd Jobs</h3><p>Not sure where your job fits? Send Michael a message with what you need and ask for a quote.</p><span class="card-arrow">↗</span></article>
+        <article class="service-card reveal" data-tilt>
+          <div class="service-top"><span class="service-no">01</span><span class="service-icon">🔧</span></div>
+          <h3>General Repairs</h3>
+          <p>Everyday household repairs and practical fixes completed carefully and reliably.</p>
+          <span class="card-arrow">↗</span>
+        </article>
+        <article class="service-card reveal delay-1" data-tilt>
+          <div class="service-top"><span class="service-no">02</span><span class="service-icon">🪑</span></div>
+          <h3>Furniture Building</h3>
+          <p>Assembly, positioning and fitting of household furniture, including awkward builds.</p>
+          <span class="card-arrow">↗</span>
+        </article>
+        <article class="service-card reveal delay-2" data-tilt>
+          <div class="service-top"><span class="service-no">03</span><span class="service-icon">📦</span></div>
+          <h3>Flat-Pack Assembly</h3>
+          <p>Wardrobes, beds, drawers, shelving units and more assembled properly from start to finish.</p>
+          <span class="card-arrow">↗</span>
+        </article>
+        <article class="service-card reveal" data-tilt>
+          <div class="service-top"><span class="service-no">04</span><span class="service-icon">🖼️</span></div>
+          <h3>Wall Mounting</h3>
+          <p>TVs, shelving, pictures and other household items mounted neatly and securely.</p>
+          <span class="card-arrow">↗</span>
+        </article>
+        <article class="service-card reveal delay-1" data-tilt>
+          <div class="service-top"><span class="service-no">05</span><span class="service-icon">🏠</span></div>
+          <h3>Home Maintenance</h3>
+          <p>Help keeping your home in good order and tackling the maintenance jobs that build up.</p>
+          <span class="card-arrow">↗</span>
+        </article>
+        <article class="service-card reveal delay-2" data-tilt>
+          <div class="service-top"><span class="service-no">06</span><span class="service-icon">✨</span></div>
+          <h3>Odd Jobs</h3>
+          <p>Not sure where your job fits? Send Michael a message with what you need and ask for a quote.</p>
+          <span class="card-arrow">↗</span>
+        </article>
       </div>
     </section>
 
-    <section id="about" class="section split-section">
-      <div class="section-intro reveal">
-        <div class="kicker">Why Michael</div>
-        <h2>Your local handyman, with a practical approach.</h2>
-        <p>Michael brings years of hands-on experience, customer-facing work and problem-solving. His background includes furniture delivery and installation, maintenance work and working in customers’ homes across the country.</p>
-      </div>
-      <div class="feature-list reveal delay-1">
-        <div class="feature"><span>01</span><div><strong>Extremely punctual</strong><p>Reliable timekeeping and respectful of your time.</p></div></div>
-        <div class="feature"><span>02</span><div><strong>Practical problem solver</strong><p>Used to awkward spaces, difficult access and finding sensible solutions.</p></div></div>
-        <div class="feature"><span>03</span><div><strong>Friendly &amp; professional</strong><p>Comfortable working in customers’ homes and communicating clearly.</p></div></div>
-        <div class="feature"><span>04</span><div><strong>Fair, straightforward service</strong><p>Clear communication without unnecessary complications.</p></div></div>
+    <section id="about" class="section section-alt">
+      <div class="split-layout">
+        <div class="section-head reveal">
+          <div class="kicker">Why Michael</div>
+          <h2>Your local handyman, with a practical approach.</h2>
+          <p>Michael brings hands-on experience, customer-facing work and problem-solving. His background includes furniture delivery and installation, maintenance work and working in customers’ homes across the country.</p>
+          <div class="stat-band">
+            <div><strong>Local</strong><span>Castle Bromwich based</span></div>
+            <div><strong>Clear</strong><span>Straightforward quotes</span></div>
+            <div><strong>Professional</strong><span>Friendly, respectful service</span></div>
+          </div>
+        </div>
+
+        <div class="feature-stack reveal delay-1">
+          <article class="feature-card">
+            <span>01</span>
+            <div>
+              <strong>Extremely punctual</strong>
+              <p>Reliable timekeeping and respectful of your schedule.</p>
+            </div>
+          </article>
+          <article class="feature-card">
+            <span>02</span>
+            <div>
+              <strong>Practical problem solver</strong>
+              <p>Used to awkward spaces, difficult access and sensible solutions.</p>
+            </div>
+          </article>
+          <article class="feature-card">
+            <span>03</span>
+            <div>
+              <strong>Friendly &amp; professional</strong>
+              <p>Comfortable working in customers’ homes and communicating clearly.</p>
+            </div>
+          </article>
+          <article class="feature-card">
+            <span>04</span>
+            <div>
+              <strong>Fair, straightforward service</strong>
+              <p>No unnecessary complications — just honest help and solid workmanship.</p>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section id="how-it-works" class="section process-section">
-      <div class="section-intro reveal">
+    <section id="how-it-works" class="section">
+      <div class="section-head reveal">
         <div class="kicker">How it works</div>
         <h2>Quick and straightforward from start to finish.</h2>
         <p>No complicated process — just send over the job, get a quote, and arrange a convenient time.</p>
       </div>
+
       <div class="process-grid">
-        <article class="process-card reveal"><span>01</span><h3>Send the job</h3><p>Message Michael on WhatsApp, Facebook or by phone. Sending a few photos is the quickest way to get started.</p></article>
-        <article class="process-card reveal delay-1"><span>02</span><h3>Get a quote</h3><p>Michael will confirm what’s needed, talk through the job and provide a straightforward quote.</p></article>
-        <article class="process-card reveal delay-2"><span>03</span><h3>Book a time</h3><p>Once you’re happy, arrange a suitable day and time to get the work completed professionally and reliably.</p></article>
+        <article class="process-card reveal">
+          <span>01</span>
+          <h3>Send the job</h3>
+          <p>Message Michael on WhatsApp, Facebook or by phone. A few photos are the quickest way to get started.</p>
+        </article>
+        <article class="process-card reveal delay-1">
+          <span>02</span>
+          <h3>Get a quote</h3>
+          <p>Michael will confirm what’s needed, talk through the job and provide a straightforward quote.</p>
+        </article>
+        <article class="process-card reveal delay-2">
+          <span>03</span>
+          <h3>Book a time</h3>
+          <p>Once you’re happy, arrange a suitable day and time to get the work completed professionally and reliably.</p>
+        </article>
       </div>
     </section>
 
-    <section id="gallery" class="section gallery-section">
-      <div class="section-intro reveal">
-        <div class="kicker">Michael's work</div>
+    <section id="gallery" class="section section-alt">
+      <div class="section-head reveal">
+        <div class="kicker">Michael’s work</div>
         <h2>Recent projects.</h2>
-        <p>A gallery of Michael’s completed work is coming soon. Once photos are added, they’ll automatically scroll through here.</p>
+        <p>A gallery of Michael’s completed work is coming soon. Once project photos are added, this area is ready to showcase them properly.</p>
       </div>
+
       <div class="gallery-shell reveal" aria-label="Work gallery">
         <div class="gallery-track">
-          <article class="gallery-tile"><span>PROJECT 01</span><strong>Images coming soon</strong><small>Completed work will appear here.</small></article>
-          <article class="gallery-tile"><span>PROJECT 02</span><strong>Images coming soon</strong><small>Completed work will appear here.</small></article>
-          <article class="gallery-tile"><span>PROJECT 03</span><strong>Images coming soon</strong><small>Completed work will appear here.</small></article>
-          <article class="gallery-tile"><span>PROJECT 04</span><strong>Images coming soon</strong><small>Completed work will appear here.</small></article>
-          <article class="gallery-tile"><span>PROJECT 01</span><strong>Images coming soon</strong><small>Completed work will appear here.</small></article>
-          <article class="gallery-tile"><span>PROJECT 02</span><strong>Images coming soon</strong><small>Completed work will appear here.</small></article>
-          <article class="gallery-tile"><span>PROJECT 03</span><strong>Images coming soon</strong><small>Completed work will appear here.</small></article>
-          <article class="gallery-tile"><span>PROJECT 04</span><strong>Images coming soon</strong><small>Completed work will appear here.</small></article>
+          <article class="gallery-tile">
+            <span>PROJECT 01</span>
+            <strong>Images coming soon</strong>
+            <small>TV mounting, shelving &amp; repairs</small>
+          </article>
+          <article class="gallery-tile">
+            <span>PROJECT 02</span>
+            <strong>Images coming soon</strong>
+            <small>Flat-pack &amp; furniture builds</small>
+          </article>
+          <article class="gallery-tile">
+            <span>PROJECT 03</span>
+            <strong>Images coming soon</strong>
+            <small>Practical jobs around the home</small>
+          </article>
+          <article class="gallery-tile">
+            <span>PROJECT 04</span>
+            <strong>Images coming soon</strong>
+            <small>Maintenance &amp; odd jobs</small>
+          </article>
+          <article class="gallery-tile">
+            <span>PROJECT 01</span>
+            <strong>Images coming soon</strong>
+            <small>TV mounting, shelving &amp; repairs</small>
+          </article>
+          <article class="gallery-tile">
+            <span>PROJECT 02</span>
+            <strong>Images coming soon</strong>
+            <small>Flat-pack &amp; furniture builds</small>
+          </article>
+          <article class="gallery-tile">
+            <span>PROJECT 03</span>
+            <strong>Images coming soon</strong>
+            <small>Practical jobs around the home</small>
+          </article>
+          <article class="gallery-tile">
+            <span>PROJECT 04</span>
+            <strong>Images coming soon</strong>
+            <small>Maintenance &amp; odd jobs</small>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="reviews" class="section reviews-section">
-      <div class="section-intro reveal">
+    <section id="reviews" class="section">
+      <div class="section-head reveal">
         <div class="kicker">Customer reviews</div>
         <h2>Recommended by local customers.</h2>
         <p>Real feedback from people who have used Michael for jobs around their homes.</p>
       </div>
+
       <div class="review-shell reveal">
         <div class="review-track">
-          <article class="review"><div class="stars">★★★★★</div><blockquote>“After being let down by another contractor at the last minute, I contacted Michael and he was able to come out within the hour. His price was very fair and the standard of work was excellent.”</blockquote><strong>Sarah</strong><span>Local customer</span></article>
-          <article class="review"><div class="stars">★★★★★</div><blockquote>“Michael fitted three bookshelves and wall-mounted my TV for me. Everything was fitted neatly and securely and he did a brilliant job. Very professional and highly recommended.”</blockquote><strong>Dave</strong><span>Local customer</span></article>
-          <article class="review"><div class="stars">★★★★★</div><blockquote>“I contacted Michael through Facebook for a few jobs I needed doing around the house. He was friendly, reliable and did a great job with everything I asked. I’d definitely recommend him.”</blockquote><strong>Lauren</strong><span>Local customer</span></article>
-          <article class="review"><div class="stars">★★★★★</div><blockquote>“After being let down by another contractor at the last minute, I contacted Michael and he was able to come out within the hour. His price was very fair and the standard of work was excellent.”</blockquote><strong>Sarah</strong><span>Local customer</span></article>
-          <article class="review"><div class="stars">★★★★★</div><blockquote>“Michael fitted three bookshelves and wall-mounted my TV for me. Everything was fitted neatly and securely and he did a brilliant job. Very professional and highly recommended.”</blockquote><strong>Dave</strong><span>Local customer</span></article>
-          <article class="review"><div class="stars">★★★★★</div><blockquote>“I contacted Michael through Facebook for a few jobs I needed doing around the house. He was friendly, reliable and did a great job with everything I asked. I’d definitely recommend him.”</blockquote><strong>Lauren</strong><span>Local customer</span></article>
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <blockquote>“After being let down by another contractor at the last minute, I contacted Michael and he was able to come out within the hour. His price was very fair and the standard of work was excellent.”</blockquote>
+            <strong>Sarah</strong>
+            <span>Local customer</span>
+          </article>
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <blockquote>“Michael fitted three bookshelves and wall-mounted my TV for me. Everything was fitted neatly and securely and he did a brilliant job. Very professional and highly recommended.”</blockquote>
+            <strong>Dave</strong>
+            <span>Local customer</span>
+          </article>
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <blockquote>“I contacted Michael through Facebook for a few jobs I needed doing around the house. He was friendly, reliable and did a great job with everything I asked. I’d definitely recommend him.”</blockquote>
+            <strong>Lauren</strong>
+            <span>Local customer</span>
+          </article>
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <blockquote>“After being let down by another contractor at the last minute, I contacted Michael and he was able to come out within the hour. His price was very fair and the standard of work was excellent.”</blockquote>
+            <strong>Sarah</strong>
+            <span>Local customer</span>
+          </article>
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <blockquote>“Michael fitted three bookshelves and wall-mounted my TV for me. Everything was fitted neatly and securely and he did a brilliant job. Very professional and highly recommended.”</blockquote>
+            <strong>Dave</strong>
+            <span>Local customer</span>
+          </article>
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <blockquote>“I contacted Michael through Facebook for a few jobs I needed doing around the house. He was friendly, reliable and did a great job with everything I asked. I’d definitely recommend him.”</blockquote>
+            <strong>Lauren</strong>
+            <span>Local customer</span>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="areas" class="section areas-section">
-      <div class="section-intro reveal">
+    <section id="areas" class="section section-alt">
+      <div class="section-head reveal">
         <div class="kicker">Areas covered</div>
         <h2>Local handyman services across Castle Bromwich and nearby areas.</h2>
         <p>Michael mainly covers Castle Bromwich and surrounding locations for local handyman work.</p>
       </div>
+
       <div class="area-list reveal">
-        <span>Castle Bromwich</span><span>Chelmsley Wood</span><span>Birmingham</span><span>Marston Green</span><span>Water Orton</span><span>Hodge Hill</span><span>Erdington</span><span>Sutton Coldfield</span>
+        <span>Castle Bromwich</span>
+        <span>Chelmsley Wood</span>
+        <span>Birmingham</span>
+        <span>Marston Green</span>
+        <span>Water Orton</span>
+        <span>Hodge Hill</span>
+        <span>Erdington</span>
+        <span>Sutton Coldfield</span>
       </div>
       <p class="area-note reveal">If you’re slightly outside these areas, it’s still worth getting in touch. Michael may still be able to help depending on the job and location.</p>
     </section>
 
-    <section class="quote-panel reveal" id="contact">
-      <div><div class="kicker">Need a hand?</div><h2>Got a job you’ve been putting off?</h2><p>Call, WhatsApp or message Michael on Facebook for a quote.</p></div>
-      <button class="btn btn-primary open-contact">Contact Michael <span>↗</span></button>
+    <section class="section faq-section">
+      <div class="section-head reveal">
+        <div class="kicker">FAQs</div>
+        <h2>Simple answers before you get in touch.</h2>
+        <p>A few common questions that make the enquiry process quicker and easier.</p>
+      </div>
+      <div class="faq-list reveal delay-1">
+        <details>
+          <summary>What’s the quickest way to get a quote?</summary>
+          <p>WhatsApp is the quickest option, especially if you can send a short description and a few photos of the job.</p>
+        </details>
+        <details>
+          <summary>Can I send over a list of small jobs?</summary>
+          <p>Yes — if you have a few jobs that need doing around the house, send them over together and Michael can advise on the best way to handle them.</p>
+        </details>
+        <details>
+          <summary>Do you only cover Castle Bromwich?</summary>
+          <p>Castle Bromwich is the main area, but nearby locations are often covered too. If you’re slightly outside the listed areas, it’s still worth asking.</p>
+        </details>
+        <details>
+          <summary>What should I include in my message?</summary>
+          <p>A short description, your location and any useful photos are ideal. That makes it much easier to understand the job and provide a quote.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="cta-section reveal" id="contact">
+      <div class="cta-copy">
+        <div class="kicker">Need a hand?</div>
+        <h2>Got a job you’ve been putting off?</h2>
+        <p>Call, WhatsApp or message Michael on Facebook for a quote. Clear, straightforward and easy from the first message.</p>
+      </div>
+      <button class="btn btn-primary open-contact" type="button">Contact Michael <span>↗</span></button>
     </section>
   </main>
 
-  <footer class="footer">
+  <footer class="site-footer">
     <div class="footer-main">
       <div class="footer-brand">
-        <img src="mclougher-logo.png" alt="M.Clougher Handyman Services logo">
-        <p>Reliable local handyman services for Castle Bromwich and surrounding areas.</p>
+        <div class="footer-brand-top">
+          <img src="brand-mark.svg" alt="M.Clougher brand mark" class="footer-mark">
+          <div>
+            <strong>M.CLOUGHER</strong>
+            <small>HANDYMAN SERVICES</small>
+          </div>
+        </div>
+        <p>Reliable local handyman services for Castle Bromwich and surrounding areas. Small jobs. Big difference.</p>
+        <div class="footer-seal">
+          <img src="mclougher-logo.png" alt="M.Clougher Handyman Services full logo">
+        </div>
       </div>
-      <div><h3>Explore</h3><a href="#services">Services</a><a href="#how-it-works">How it works</a><a href="#gallery">Gallery</a><a href="#reviews">Reviews</a></div>
-      <div><h3>Contact</h3><a href="tel:+447724399685">07724 399685</a><a href="https://wa.me/447724399685?text=Hi%20Michael%20-%20I%20am%20after%20a%20quote%20please" target="_blank" rel="noopener">WhatsApp Michael</a><a href="https://www.facebook.com/share/19gEhT4pK6/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a></div>
+
+      <div class="footer-column">
+        <h3>Explore</h3>
+        <a href="#services">Services</a>
+        <a href="#about">Why Michael</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#reviews">Reviews</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Contact</h3>
+        <a href="tel:+447724399685">07724 399685</a>
+        <a href="https://wa.me/447724399685?text=Hi%20Michael%20-%20I%20am%20after%20a%20quote%20please" target="_blank" rel="noopener">WhatsApp Michael</a>
+        <a href="https://www.facebook.com/share/19gEhT4pK6/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>
+      </div>
     </div>
-    <div class="footer-bottom"><span>© <span id="year"></span> M.Clougher Handyman Services</span><span>Small jobs. Big difference.</span></div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> M.Clougher Handyman Services</span>
+      <span>Designed for a premium, simple customer journey.</span>
+    </div>
   </footer>
 
-  <button class="contact-fab open-contact" aria-label="Contact Michael"><span>↗</span> Get a quote</button>
+  <button class="contact-fab open-contact" type="button" aria-label="Contact Michael"><span>↗</span> Get a quote</button>
 
   <div class="modal" id="modal" aria-hidden="true">
     <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
-      <div class="sheet-top"><div><small>GET IN TOUCH</small><h3 id="contactTitle">Contact Michael</h3></div><button class="close" id="closeModal" aria-label="Close">×</button></div>
-      <p>Send a few details — and photos if you can — for the quickest quote.</p>
+      <div class="sheet-top">
+        <div>
+          <small>GET IN TOUCH</small>
+          <h3 id="contactTitle">Contact Michael</h3>
+        </div>
+        <button class="close" id="closeModal" aria-label="Close">×</button>
+      </div>
+      <p>Send a few details — and photos if you can — for the quickest and easiest quote.</p>
       <div class="contact-options">
-        <a class="contact-option" href="https://wa.me/447724399685?text=Hi%20Michael%20-%20I%20am%20after%20a%20quote%20please" target="_blank" rel="noopener"><span>01</span><div><strong>WhatsApp Michael</strong><small>Best for photos and a quick quote</small></div><b>↗</b></a>
-        <a class="contact-option" href="tel:+447724399685"><span>02</span><div><strong>Call Michael</strong><small>07724 399685</small></div><b>↗</b></a>
-        <a class="contact-option" href="https://www.facebook.com/share/19gEhT4pK6/?mibextid=wwXIfr" target="_blank" rel="noopener"><span>03</span><div><strong>Facebook</strong><small>Open Michael’s Facebook profile</small></div><b>↗</b></a>
+        <a class="contact-option" href="https://wa.me/447724399685?text=Hi%20Michael%20-%20I%20am%20after%20a%20quote%20please" target="_blank" rel="noopener">
+          <span>01</span>
+          <div>
+            <strong>WhatsApp Michael</strong>
+            <small>Best for photos and a quick quote</small>
+          </div>
+          <b>↗</b>
+        </a>
+        <a class="contact-option" href="tel:+447724399685">
+          <span>02</span>
+          <div>
+            <strong>Call Michael</strong>
+            <small>07724 399685</small>
+          </div>
+          <b>↗</b>
+        </a>
+        <a class="contact-option" href="https://www.facebook.com/share/19gEhT4pK6/?mibextid=wwXIfr" target="_blank" rel="noopener">
+          <span>03</span>
+          <div>
+            <strong>Facebook</strong>
+            <small>Open Michael’s Facebook profile</small>
+          </div>
+          <b>↗</b>
+        </a>
       </div>
     </div>
   </div>

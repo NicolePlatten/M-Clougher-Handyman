@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" role="img" aria-labelledby="title desc">
+  <title id="title">M.Clougher brand mark</title>
+  <desc id="desc">Simplified monogram with roofline and initials MC in a premium bronze palette</desc>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f1dfbf"/>
+      <stop offset="45%" stop-color="#d4b07a"/>
+      <stop offset="100%" stop-color="#9d7647"/>
+    </linearGradient>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <rect width="220" height="220" rx="40" fill="#0f1112"/>
+  <g filter="url(#shadow)">
+    <path d="M26 90L109 34l82 56" fill="none" stroke="url(#g)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M154 52v18" stroke="url(#g)" stroke-width="9" stroke-linecap="round"/>
+    <rect x="101" y="55" width="17" height="17" rx="3" fill="url(#g)" opacity="0.95"/>
+    <rect x="122" y="55" width="17" height="17" rx="3" fill="url(#g)" opacity="0.95"/>
+    <rect x="101" y="76" width="17" height="17" rx="3" fill="url(#g)" opacity="0.95"/>
+    <rect x="122" y="76" width="17" height="17" rx="3" fill="url(#g)" opacity="0.95"/>
+  </g>
+  <text x="110" y="152" text-anchor="middle" font-size="88" font-family="Georgia, 'Times New Roman', serif" font-weight="700" letter-spacing="2" fill="url(#g)">MC</text>
+  <path d="M131 124l9-8 7 7-5 5 12 12-6 6-12-12-5 5-7-7z" fill="#f1dfbf" opacity="0.95"/>
+</svg>

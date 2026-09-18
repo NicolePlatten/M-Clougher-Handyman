@@ -1,44 +1,122 @@
+const header = document.getElementById('header');
+const nav = document.getElementById('siteNav');
+const menuToggle = document.getElementById('menuToggle');
+const modal = document.getElementById('modal');
+const progress = document.getElementById('pageProgress');
+const glow = document.getElementById('cursorGlow');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-const header=document.getElementById('header');
-const modal=document.getElementById('modal');
-const progress=document.getElementById('pageProgress');
-const glow=document.getElementById('cursorGlow');
-const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-function updateScroll(){
-  header.classList.toggle('scrolled',window.scrollY>24);
-  const max=document.documentElement.scrollHeight-window.innerHeight;
-  progress.style.width=max>0?`${(window.scrollY/max)*100}%`:'0%';
+function updateScrollState() {
+  header.classList.toggle('scrolled', window.scrollY > 24);
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  progress.style.width = max > 0 ? `${(window.scrollY / max) * 100}%` : '0%';
 }
-window.addEventListener('scroll',updateScroll,{passive:true});updateScroll();
 
-const io=new IntersectionObserver(entries=>entries.forEach(entry=>{
-  if(entry.isIntersecting){entry.target.classList.add('show');io.unobserve(entry.target)}
-}),{threshold:.12,rootMargin:'0px 0px -5% 0px'});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+window.addEventListener('scroll', updateScrollState, { passive: true });
+updateScrollState();
 
-function openContact(){modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.classList.add('modal-open')}
-function closeContact(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.classList.remove('modal-open')}
-document.querySelectorAll('.open-contact').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();openContact()}));
-document.getElementById('closeModal').addEventListener('click',closeContact);
-modal.addEventListener('click',e=>{if(e.target===modal)closeContact()});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeContact()});
-document.getElementById('year').textContent=new Date().getFullYear();
+document.getElementById('year').textContent = new Date().getFullYear();
 
-if(!reduce){
-  window.addEventListener('pointermove',e=>{
-    glow.style.opacity='1';glow.style.left=`${e.clientX}px`;glow.style.top=`${e.clientY}px`;
-  },{passive:true});
-  document.addEventListener('pointerleave',()=>glow.style.opacity='0');
+if (menuToggle) {
+  menuToggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    menuToggle.classList.toggle('active', open);
+    menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
 
-  document.querySelectorAll('[data-tilt]').forEach(card=>{
-    card.addEventListener('pointermove',e=>{
-      const r=card.getBoundingClientRect();
-      const x=(e.clientX-r.left)/r.width; const y=(e.clientY-r.top)/r.height;
-      const rx=(.5-y)*5; const ry=(x-.5)*6;
-      card.style.transform=`perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-3px)`;
-      card.style.setProperty('--mx',`${x*100}%`);card.style.setProperty('--my',`${y*100}%`);
+  nav.querySelectorAll('a, button').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      menuToggle.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
     });
-    card.addEventListener('pointerleave',()=>card.style.transform='');
+  });
+}
+
+function openContact() {
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('modal-open');
+}
+
+function closeContact() {
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('modal-open');
+}
+
+document.querySelectorAll('.open-contact').forEach(button => {
+  button.addEventListener('click', event => {
+    event.preventDefault();
+    openContact();
+  });
+});
+
+document.getElementById('closeModal').addEventListener('click', closeContact);
+modal.addEventListener('click', event => {
+  if (event.target === modal) closeContact();
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    closeContact();
+    nav.classList.remove('open');
+    menuToggle?.classList.remove('active');
+    menuToggle?.setAttribute('aria-expanded', 'false');
+  }
+});
+
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -5% 0px' });
+
+document.querySelectorAll('.reveal').forEach(element => revealObserver.observe(element));
+
+const sectionLinks = Array.from(document.querySelectorAll('.site-nav a[href^="#"]'));
+const linkedSections = sectionLinks
+  .map(link => document.querySelector(link.getAttribute('href')))
+  .filter(Boolean);
+
+const sectionObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const id = `#${entry.target.id}`;
+    sectionLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === id));
+  });
+}, { threshold: 0.55 });
+
+linkedSections.forEach(section => sectionObserver.observe(section));
+
+if (!prefersReducedMotion) {
+  window.addEventListener('pointermove', event => {
+    glow.style.opacity = '1';
+    glow.style.left = `${event.clientX}px`;
+    glow.style.top = `${event.clientY}px`;
+  }, { passive: true });
+
+  document.addEventListener('pointerleave', () => {
+    glow.style.opacity = '0';
+  });
+
+  document.querySelectorAll('[data-tilt]').forEach(card => {
+    card.addEventListener('pointermove', event => {
+      const bounds = card.getBoundingClientRect();
+      const x = (event.clientX - bounds.left) / bounds.width;
+      const y = (event.clientY - bounds.top) / bounds.height;
+      const rotateX = (0.5 - y) * 5;
+      const rotateY = (x - 0.5) * 6;
+      card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+      card.style.setProperty('--mx', `${x * 100}%`);
+      card.style.setProperty('--my', `${y * 100}%`);
+    });
+
+    card.addEventListener('pointerleave', () => {
+      card.style.transform = '';
+    });
   });
 }
