@@ -987,3 +987,44 @@ body{
     font-size:.84rem;
   }
 }
+
+
+/* ===== MOBILE HERO INFO CHIPS - FINAL POSITION ===== */
+@media (max-width:680px){
+  .hero-panel-top{display:none}
+
+  .hero-panel-bottom{
+    display:grid;
+    left:10px;
+    right:10px;
+    bottom:6px;
+    grid-template-columns:1fr 1fr;
+    gap:7px;
+    padding:7px 9px;
+    border-radius:13px;
+    background:rgba(7,9,10,.72);
+    border-color:rgba(174,180,183,.12);
+    backdrop-filter:blur(10px);
+    box-shadow:0 8px 18px rgba(0,0,0,.18);
+  }
+
+  .hero-panel-bottom div{
+    padding:0 3px;
+    min-width:0;
+  }
+
+  .hero-panel-bottom small{
+    font-size:.49rem;
+    letter-spacing:.12em;
+    line-height:1.1;
+  }
+
+  .hero-panel-bottom strong{
+    margin-top:3px;
+    font-size:.69rem;
+    line-height:1.15;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+}
