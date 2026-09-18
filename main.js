@@ -120,3 +120,45 @@ if (!prefersReducedMotion) {
     });
   });
 }
+
+
+function enableDragScroll(selector) {
+  document.querySelectorAll(selector).forEach(scroller => {
+    let isDown = false;
+    let startX = 0;
+    let startScrollLeft = 0;
+    let resumeTimer;
+
+    const pause = () => {
+      scroller.classList.add('is-interacting');
+      clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(() => scroller.classList.remove('is-interacting'), 1800);
+    };
+
+    scroller.addEventListener('pointerdown', event => {
+      isDown = true;
+      startX = event.pageX;
+      startScrollLeft = scroller.scrollLeft;
+      pause();
+      scroller.setPointerCapture?.(event.pointerId);
+    });
+
+    scroller.addEventListener('pointermove', event => {
+      if (!isDown) return;
+      const walk = event.pageX - startX;
+      scroller.scrollLeft = startScrollLeft - walk;
+    });
+
+    const endDrag = () => {
+      isDown = false;
+    };
+
+    scroller.addEventListener('pointerup', endDrag);
+    scroller.addEventListener('pointercancel', endDrag);
+    scroller.addEventListener('wheel', pause, { passive: true });
+    scroller.addEventListener('touchstart', pause, { passive: true });
+    scroller.addEventListener('touchmove', pause, { passive: true });
+  });
+}
+
+enableDragScroll('.gallery-shell, .review-shell');
